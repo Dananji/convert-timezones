@@ -3,18 +3,25 @@
 This is a simple application that shows the current time of a given timezone.
 To do this the application uses a Python Flask back-end with a Vue.js client.
 
-### Requirements
-
-To run this project on your local machine you need the following installed;
-- Python (at least version 3.6.9)
-- Flask (1.1.2) and Flask-Cors (3.0.10)
-- Vue/cli (4.5.11)
-
 ### Run on local machine
 
-- Get a copy of the project on your local machine with `git clone https://github.com/Dananji/convert-timezones.git`
-- Open up a terminal from the root directory of the project
-- Go into `server`directory and run `python main.py`
-    - This will start the server at http://localhost:5000 
-- In another terminal window, go into `client` directory and run `npm run serve`
-    - Navigate to http://localhost:8080 to see the application running in your browser
+- Get a copy of the project on your local machine with, `git clone https://github.com/Dananji/convert-timezones.git`
+- Open up a terminal from the root directory of the project and run the following:
+    ```
+    cd server
+    python3 -m venv env
+    source env/bin/activate
+    pip install -r requirements.txt
+    python main.py
+    ```
+    This will start the server at port 5000 in your localhost, but the root path will not serve anything. This will serve 2 endpoints:
+    1. `/timezones` : gives a list of timezones using Python's `pytz` package
+    2. `/time?timezone=<timezone>` : calculates the current time of the given timezone
+
+- In another terminal window;
+    ```
+    cd client
+    npm install
+    npm run serve
+    ```
+    Navigate to http://localhost:8080 to see the application running in your browser.
