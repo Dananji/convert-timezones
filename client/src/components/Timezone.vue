@@ -1,14 +1,16 @@
 <template>
   <div>
     <h2>Convert Timezones</h2>
-    <select class="form-control" v-model="selected" @change="selectedTimezone()">
+    <div class="styled-select">
+      <select v-model="selected" @change="selectedTimezone()">
         <option disabled value="">Please select a Timezone</option>
         <option v-for="timezone in timezoneList" :value="timezone" :key="timezone.id">
             {{ timezone.name }}
         </option>
-    </select>
+      </select>
+    </div>
     <p v-if="selected">Timezone: {{ selected.name }}</p>
-    <p v-if="selected">Current time: {{ msg }}</p>
+    <p v-if="selected">Current time: {{ time }}</p>
   </div>
 </template>
 
@@ -19,7 +21,7 @@ export default {
   name: 'Timezone',
   data() {
     return {
-      msg: '',
+      time: '',
       timezoneList: [],
       selected: '',
     };
@@ -39,7 +41,7 @@ export default {
       const path = 'http://localhost:5000/time';
       axios.get(path, { params: { timezone: this.selected.name } })
         .then((res) => {
-          this.msg = res.data;
+          this.time = res.data;
         })
         .catch((error) => {
           // eslint-disable-next-line
@@ -52,3 +54,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.styled-select select {
+  position: relative;
+  width: 50%;
+  text-align: left;
+  outline: auto;
+  height: 47px;
+  line-height: 47px;
+}
+</style>
