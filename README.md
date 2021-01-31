@@ -12,7 +12,7 @@ To run this project on your local machine you need the following installed;
 
 ### Run on local machine
 
-- Get a copy of the project on your local machine with `git clone `
+- Get a copy of the project on your local machine with `git clone https://github.com/Dananji/convert-timezones.git`
 - Open up a terminal from the root directory of the project
 - Go into `server`directory and run `python main.py`
     - This will start the server at http://localhost:5000 
